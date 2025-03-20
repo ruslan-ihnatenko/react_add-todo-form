@@ -5,13 +5,11 @@ import { UserInfo } from '../UserInfo';
 
 type Props = {
   todo: ToDo;
-  key: number;
 };
 
-export const TodoInfo: React.FC<Props> = ({ todo, key }) => {
+export const TodoInfo: React.FC<Props> = ({ todo }) => {
   return (
     <article
-      key={key}
       data-id={todo.id}
       className={classNames('TodoInfo', {
         'TodoInfo--completed': todo.completed,

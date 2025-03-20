@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.scss';
 
-// import usersFromServer from './api/users';
+import usersFromServer from './api/users';
 import todosFromServer from './api/todos';
 import { getUserById } from './services/user';
 import { ToDo } from './types/Todo';
@@ -34,7 +34,11 @@ export const App = () => {
   return (
     <div className="App">
       <h1>Add todo form</h1>
-      <TodoForm onSubmit={addToDo} />
+      <TodoForm
+        onSubmit={addToDo}
+        users={usersFromServer}
+        getUserById={getUserById}
+      />
       <TodoList todos={todos} />
     </div>
   );

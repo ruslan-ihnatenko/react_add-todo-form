@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import userFromServer from '../../api/users';
 import { ToDo } from '../../types/Todo';
-import { getUserById } from '../../services/user';
+import { User } from '../../types/User';
+import users from '../../api/users';
 
 type Props = {
   onSubmit: (todo: ToDo) => void;
+  users: User[];
+  getUserById: (userId: number) => User | null;
 };
 
-export const TodoForm: React.FC<Props> = ({ onSubmit }) => {
+export const TodoForm: React.FC<Props> = ({ onSubmit, getUserById }) => {
   const [title, setTitle] = useState('');
   const [userId, setUserId] = useState(0);
 
@@ -88,7 +90,7 @@ export const TodoForm: React.FC<Props> = ({ onSubmit }) => {
             <option value="0" disabled>
               Choose a user
             </option>
-            {userFromServer.map(user => (
+            {users.map(user => (
               <option key={user.id} value={user.id}>
                 {user.name}
               </option>
