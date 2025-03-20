@@ -38,6 +38,7 @@ export const App = () => {
         onSubmit={addToDo}
         users={usersFromServer}
         getUserById={getUserById}
+        newId={getNewPostId(todos)}
       />
       <TodoList todos={todos} />
     </div>

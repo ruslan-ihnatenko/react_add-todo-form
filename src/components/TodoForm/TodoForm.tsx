@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import { ToDo } from '../../types/Todo';
 import { User } from '../../types/User';
-import users from '../../api/users';
 
 type Props = {
   onSubmit: (todo: ToDo) => void;
   users: User[];
   getUserById: (userId: number) => User | null;
+  newId: number;
 };
 
-export const TodoForm: React.FC<Props> = ({ onSubmit, getUserById }) => {
+export const TodoForm: React.FC<Props> = ({
+  onSubmit,
+  getUserById,
+  users,
+  newId,
+}) => {
   const [title, setTitle] = useState('');
   const [userId, setUserId] = useState(0);
 
@@ -50,7 +55,7 @@ export const TodoForm: React.FC<Props> = ({ onSubmit, getUserById }) => {
     }
 
     onSubmit({
-      id: 0,
+      id: newId,
       title,
       completed: false,
       userId,
